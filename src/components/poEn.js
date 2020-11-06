@@ -13,6 +13,27 @@ class ComponentToPrint extends React.Component {
         super(props);
     }
 
+    // 處理換行
+    handlerEnter(content) {
+        let snArray = [];
+        snArray = content.split('\n');
+
+        let br = <br></br>;
+        let result = null;
+        if (snArray.length < 2) {
+            return content;
+        }
+
+        for (let i = 0; i < snArray.length; i++) {
+            if (i == 0) {
+                result = snArray[i];
+            } else {
+                result = <span>{result}{br}{snArray[i]}</span>;
+            }
+        }
+        return result;
+    }
+
     render() {
         return (
             <div style={{ fontSize: '30px' }} className="printFont">
@@ -34,6 +55,10 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.sale}</td>
                         </tr>
                         <tr>
+                            <td>廠商</td>
+                            <td>{this.props.factory}</td>
+                        </tr>
+                        <tr>
                             <td>客戶名稱</td>
                             <td>{this.props.name}</td>
                         </tr>
@@ -43,7 +68,7 @@ class ComponentToPrint extends React.Component {
                         </tr>
                         <tr>
                             <td style={{ height: '100px' }}>施工地址</td>
-                            <td>{this.props.address}</td>
+                            <td>{this.handlerEnter(this.props.address)}</td>
                         </tr>
                         <tr>
                             <td>金額</td>
@@ -55,7 +80,7 @@ class ComponentToPrint extends React.Component {
                         </tr>
                         <tr>
                             <td style={{ height: '100px' }}>備註</td>
-                            <td>{this.props.other}</td>
+                            <td>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -76,6 +101,7 @@ function PoEn() {
     const [phone, setPhone] = React.useState("");
     const [money, setMoney] = React.useState("");
     const [other, setOther] = React.useState("");
+    const [factory, setFactory] = React.useState("");
     const [database, setDatabase] = React.useState();
     const [loadingStatus, setLoadingStatus] = React.useState(false);
     const [futureNum, setFutureNum] = React.useState();
@@ -107,6 +133,7 @@ function PoEn() {
         setPhone("");
         setMoney("");
         setOther("");
+        setFactory("");
     }
 
     // 獲取當前編號
@@ -154,6 +181,7 @@ function PoEn() {
                 other,
                 phone,
                 sale,
+                factory,
                 'updateTime' : new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
             }
         }).then(function () {
@@ -172,6 +200,7 @@ function PoEn() {
         if (name === 'number') setNumber(value);
         else if (name === 'dateTime') setDateTime(value);
         else if (name === 'sale') setSale(value);
+        else if ( name === 'factory' ) setFactory(value);
         else if (name === 'name') setName(value);
         else if (name === 'address') setAddress(value);
         else if (name === 'phone') setPhone(value);
@@ -244,6 +273,7 @@ function PoEn() {
                         sale={sale}
                         address={address}
                         other={other}
+                        factory={factory}
                         name={name}
                         saveData={(date, num) => saveData(date, num)}
                         setLoadingStatus={(status) => setLoadingStatus(status)}
@@ -264,6 +294,7 @@ function PoEn() {
                 <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
                     number={from === "now" ? convertNum(number) : convertNum(futureNum)}
                     dateTime={dateTime}
+                    factory={factory}
                     name={name}
                     phone={phone}
                     money={money}

@@ -185,6 +185,14 @@ function Form(props) {
                 </div>
                 <div className="row">
                     <div className="col-25">
+                        <label htmlFor="lname">廠商</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text" id="factory" name="factory" placeholder="請輸入廠商" onChange={(e) => props.handleChange(e)} value={props.factory}></input>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-25">
                         <label htmlFor="lname">客戶名稱</label>
                     </div>
                     <div className="col-75">

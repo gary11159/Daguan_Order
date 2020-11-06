@@ -12,6 +12,27 @@ class ComponentToPrint extends React.Component {
         super(props);
     }
 
+    // 處理換行
+    handlerEnter(content) {
+        let snArray = [];
+        snArray = content.split('\n');
+
+        let br = <br></br>;
+        let result = null;
+        if (snArray.length < 2) {
+            return content;
+        }
+
+        for (let i = 0; i < snArray.length; i++) {
+            if (i == 0) {
+                result = snArray[i];
+            } else {
+                result = <span>{result}{br}{snArray[i]}</span>;
+            }
+        }
+        return result;
+    }
+
     render() {
         return (
             <div style={{ fontSize: '30px' }} className="printFont">
@@ -33,6 +54,10 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.sale}</td>
                         </tr>
                         <tr>
+                            <td>廠商</td>
+                            <td>{this.props.factory}</td>
+                        </tr>
+                        <tr>
                             <td>客戶名稱</td>
                             <td>{this.props.name}</td>
                         </tr>
@@ -42,7 +67,7 @@ class ComponentToPrint extends React.Component {
                         </tr>
                         <tr>
                             <td style={{ height: '100px' }}>施工地址</td>
-                            <td>{this.props.address}</td>
+                            <td>{this.handlerEnter(this.props.address)}</td>
                         </tr>
                         <tr>
                             <td>金額</td>
@@ -54,7 +79,7 @@ class ComponentToPrint extends React.Component {
                         </tr>
                         <tr>
                             <td style={{ height: '100px' }}>備註</td>
-                            <td>{this.props.other}</td>
+                            <td>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -75,6 +100,7 @@ function HistoryCheck(props) {
 
     const [dateTime, setDateTime] = React.useState("");
     const [sale, setSale] = React.useState("");
+    const [factory, setFactory] = React.useState("");
     const [name, setName] = React.useState("");
     const [address, setAddress] = React.useState("");
     const [phone, setPhone] = React.useState("");
@@ -91,6 +117,7 @@ function HistoryCheck(props) {
         setMoney("");
         setOther("");
         setChooseNumber("");
+        setFactory("");
     }
 
     async function handlerDatePickerChange(date) {
@@ -136,6 +163,7 @@ function HistoryCheck(props) {
             setPhone(data.phone);
             setMoney(data.money);
             setOther(data.other);
+            setFactory(data.factory);
         } else {
             initData();
         }
@@ -151,7 +179,8 @@ function HistoryCheck(props) {
             name,
             other,
             phone,
-            sale
+            sale,
+            factory
         }
         setDataPrint(dataPrint)
         props.setLoadingStatus(true);
@@ -164,6 +193,7 @@ function HistoryCheck(props) {
                 other,
                 phone,
                 sale,
+                factory,
                 'updateTime': new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
             }
         }).then(function () {
@@ -186,6 +216,7 @@ function HistoryCheck(props) {
         else if (name === 'phone') setPhone(value);
         else if (name === 'money') setMoney(value);
         else if (name === 'other') setOther(value);
+        else if (name === 'factory') setFactory(value);
     }
 
     // 轉換編號成正式格式
@@ -254,14 +285,24 @@ function HistoryCheck(props) {
                             phone={phone}
                             money={money}
                             other={other}
+                            factory={factory}
                             historyChooseDate={chooseDate}
                             saveData={() => saveData()}
                             from="history"
                             setLoadingStatus={(status) => props.setLoadingStatus(status)}
                         />
                         <div style={{ overflow: 'hidden', height: 0 }}>
-                            {/* <div style={{ width: '100%' }}> */}
-                            <ComponentToPrint number={convertNum(chooseNumber)} dateTime={dateTime} name={name} phone={phone} money={money} sale={sale} address={address} other={other}
+                        {/* <div style={{ width: '100%' }}> */}
+                            <ComponentToPrint
+                                number={convertNum(chooseNumber)}
+                                dateTime={dateTime}
+                                name={name}
+                                phone={phone}
+                                money={money}
+                                sale={sale}
+                                address={address}
+                                other={other}
+                                factory={factory}
                                 ref={el => (componentRef.current = el)} />
                         </div>
                     </>
