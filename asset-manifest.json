@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/daguan_order/static/css/main.76386005.chunk.css",
-    "main.js": "/daguan_order/static/js/main.d497c1c9.chunk.js",
-    "main.js.map": "/daguan_order/static/js/main.d497c1c9.chunk.js.map",
+    "main.js": "/daguan_order/static/js/main.c293827c.chunk.js",
+    "main.js.map": "/daguan_order/static/js/main.c293827c.chunk.js.map",
     "runtime-main.js": "/daguan_order/static/js/runtime-main.16c62ea5.js",
     "runtime-main.js.map": "/daguan_order/static/js/runtime-main.16c62ea5.js.map",
     "static/css/2.e6ac38db.chunk.css": "/daguan_order/static/css/2.e6ac38db.chunk.css",
     "static/js/2.3b22e78d.chunk.js": "/daguan_order/static/js/2.3b22e78d.chunk.js",
     "static/js/2.3b22e78d.chunk.js.map": "/daguan_order/static/js/2.3b22e78d.chunk.js.map",
     "index.html": "/daguan_order/index.html",
-    "precache-manifest.6d6be5e9f1ded80a5bc90f87246ff65c.js": "/daguan_order/precache-manifest.6d6be5e9f1ded80a5bc90f87246ff65c.js",
+    "precache-manifest.65b33b000ba8926294e45de33d445e9e.js": "/daguan_order/precache-manifest.65b33b000ba8926294e45de33d445e9e.js",
     "service-worker.js": "/daguan_order/service-worker.js",
     "static/css/2.e6ac38db.chunk.css.map": "/daguan_order/static/css/2.e6ac38db.chunk.css.map",
     "static/css/main.76386005.chunk.css.map": "/daguan_order/static/css/main.76386005.chunk.css.map",
@@ -24,6 +24,6 @@
     "static/css/2.e6ac38db.chunk.css",
     "static/js/2.3b22e78d.chunk.js",
     "static/css/main.76386005.chunk.css",
-    "static/js/main.d497c1c9.chunk.js"
+    "static/js/main.c293827c.chunk.js"
   ]
 }
