@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/daguan_order/precache-manifest.262a4ba870b8826d5f1942c38a552187.js"
+  "/daguan_order/precache-manifest.6d6be5e9f1ded80a5bc90f87246ff65c.js"
 );
 
 self.addEventListener('message', (event) => {
