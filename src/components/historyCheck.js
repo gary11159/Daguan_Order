@@ -66,6 +66,10 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.phone}</td>
                         </tr>
                         <tr>
+                            <td>施工時間</td>
+                            <td>{this.props.workTime}</td>
+                        </tr>
+                        <tr>
                             <td style={{ height: '100px' }}>施工地址</td>
                             <td>{this.handlerEnter(this.props.address)}</td>
                         </tr>
@@ -74,11 +78,11 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.money}</td>
                         </tr>
                         <tr>
-                            <td style={{ height: '100px' }}>客戶簽收</td>
+                            <td style={{ height: '60px' }}>客戶簽收</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td style={{ height: '100px' }}>備註</td>
+                            <td style={{ height: '60px' }}>備註</td>
                             <td>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
@@ -101,6 +105,7 @@ function HistoryCheck(props) {
     const [dateTime, setDateTime] = React.useState("");
     const [sale, setSale] = React.useState("");
     const [factory, setFactory] = React.useState("");
+    const [workTime, setWorktime] = React.useState("");
     const [name, setName] = React.useState("");
     const [address, setAddress] = React.useState("");
     const [phone, setPhone] = React.useState("");
@@ -118,6 +123,7 @@ function HistoryCheck(props) {
         setOther("");
         setChooseNumber("");
         setFactory("");
+        setWorktime("");
     }
 
     async function handlerDatePickerChange(date) {
@@ -163,7 +169,8 @@ function HistoryCheck(props) {
             setPhone(data.phone);
             setMoney(data.money);
             setOther(data.other);
-            setFactory(data.factory);
+            setFactory(data.factory === undefined ? "" : data.factory);
+            setWorktime(data.workTime === undefined ? "": data.workTime);
         } else {
             initData();
         }
@@ -180,11 +187,12 @@ function HistoryCheck(props) {
             other,
             phone,
             sale,
-            factory
+            factory,
+            workTime
         }
-        setDataPrint(dataPrint)
+        setDataPrint(dataPrint);
         props.setLoadingStatus(true);
-        await props.database.ref(path).update({
+        let jsonData = {
             [chooseNumber]: {
                 address,
                 dateTime,
@@ -194,16 +202,34 @@ function HistoryCheck(props) {
                 phone,
                 sale,
                 factory,
+                workTime,
                 'updateTime': new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
             }
-        }).then(function () {
-            props.setLoadingStatus(false);
-            props.refreshNumber(path);
-        }).catch(function () {
-            props.setLoadingStatus(false);
-            alert("伺服器發生錯誤，請稍後再試或是通知管理員");
-            e.preventDefault();
-        });
+        }
+        await props.database.ref(path).update(
+            // 會用JSON Parse是用來剔除undefined(一般發生在新欄位產生)
+            JSON.parse(JSON.stringify({
+                [chooseNumber]: {
+                    address,
+                    dateTime,
+                    money,
+                    name,
+                    other,
+                    phone,
+                    sale,
+                    factory,
+                    workTime,
+                    'updateTime': new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
+                }
+            }))
+            ).then(function () {
+                props.setLoadingStatus(false);
+                props.refreshNumber(path);
+            }).catch(function () {
+                props.setLoadingStatus(false);
+                alert("伺服器發生錯誤，請稍後再試或是通知管理員");
+                e.preventDefault();
+            });
     }
 
     function handleChange(e) {
@@ -217,6 +243,7 @@ function HistoryCheck(props) {
         else if (name === 'money') setMoney(value);
         else if (name === 'other') setOther(value);
         else if (name === 'factory') setFactory(value);
+        else if (name === 'workTime') setWorktime(value);
     }
 
     // 轉換編號成正式格式
@@ -286,13 +313,14 @@ function HistoryCheck(props) {
                             money={money}
                             other={other}
                             factory={factory}
+                            workTime={workTime}
                             historyChooseDate={chooseDate}
                             saveData={() => saveData()}
                             from="history"
                             setLoadingStatus={(status) => props.setLoadingStatus(status)}
                         />
                         <div style={{ overflow: 'hidden', height: 0 }}>
-                        {/* <div style={{ width: '100%' }}> */}
+                            {/* <div style={{ width: '100%' }}> */}
                             <ComponentToPrint
                                 number={convertNum(chooseNumber)}
                                 dateTime={dateTime}
@@ -303,6 +331,7 @@ function HistoryCheck(props) {
                                 address={address}
                                 other={other}
                                 factory={factory}
+                                workTime={workTime}
                                 ref={el => (componentRef.current = el)} />
                         </div>
                     </>

@@ -209,6 +209,14 @@ function Form(props) {
                 </div>
                 <div className="row">
                     <div className="col-25">
+                        <label htmlFor="subject">施工時間</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text" id="workTime" name="workTime" placeholder="請輸入施工時間" onChange={(e) => props.handleChange(e)} value={props.workTime}></input>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-25">
                         <label htmlFor="subject">施工地址</label>
                     </div>
                     <div className="col-75">

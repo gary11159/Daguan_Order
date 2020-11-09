@@ -67,6 +67,10 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.phone}</td>
                         </tr>
                         <tr>
+                            <td>施工時間</td>
+                            <td>{this.props.workTime}</td>
+                        </tr>
+                        <tr>
                             <td style={{ height: '100px' }}>施工地址</td>
                             <td>{this.handlerEnter(this.props.address)}</td>
                         </tr>
@@ -75,11 +79,11 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.money}</td>
                         </tr>
                         <tr>
-                            <td style={{ height: '100px' }}>客戶簽收</td>
+                            <td style={{ height: '60px' }}>客戶簽收</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td style={{ height: '100px' }}>備註</td>
+                            <td style={{ height: '60px' }}>備註</td>
                             <td>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
@@ -102,6 +106,7 @@ function PoEn() {
     const [money, setMoney] = React.useState("");
     const [other, setOther] = React.useState("");
     const [factory, setFactory] = React.useState("");
+    const [workTime, setWorktime] = React.useState("");
     const [database, setDatabase] = React.useState();
     const [loadingStatus, setLoadingStatus] = React.useState(false);
     const [futureNum, setFutureNum] = React.useState();
@@ -134,9 +139,10 @@ function PoEn() {
         setMoney("");
         setOther("");
         setFactory("");
+        setWorktime("");
     }
 
-    // 獲取當前編號
+    // 初始化資料庫
     React.useEffect(() => {
         let app = firebase.initializeApp(config);
         let database = app.database();
@@ -149,7 +155,7 @@ function PoEn() {
             const path = '/' + (new Date().getFullYear()) + (new Date().getMonth() + 1);
             refreshNumber(path);
         }
-    }, [database]);
+    }, [database, curTab]);
 
     function refreshNumber(path) {
         setLoadingStatus(true);
@@ -182,7 +188,8 @@ function PoEn() {
                 phone,
                 sale,
                 factory,
-                'updateTime' : new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
+                workTime,
+                'updateTime': new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
             }
         }).then(function () {
             setLoadingStatus(false);
@@ -200,7 +207,8 @@ function PoEn() {
         if (name === 'number') setNumber(value);
         else if (name === 'dateTime') setDateTime(value);
         else if (name === 'sale') setSale(value);
-        else if ( name === 'factory' ) setFactory(value);
+        else if (name === 'factory') setFactory(value);
+        else if (name === 'workTime') setWorktime(value);
         else if (name === 'name') setName(value);
         else if (name === 'address') setAddress(value);
         else if (name === 'phone') setPhone(value);
@@ -274,6 +282,7 @@ function PoEn() {
                         address={address}
                         other={other}
                         factory={factory}
+                        workTime={workTime}
                         name={name}
                         saveData={(date, num) => saveData(date, num)}
                         setLoadingStatus={(status) => setLoadingStatus(status)}
@@ -295,6 +304,7 @@ function PoEn() {
                     number={from === "now" ? convertNum(number) : convertNum(futureNum)}
                     dateTime={dateTime}
                     factory={factory}
+                    workTime={workTime}
                     name={name}
                     phone={phone}
                     money={money}
