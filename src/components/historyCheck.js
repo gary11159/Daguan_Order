@@ -58,11 +58,11 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.factory}</td>
                         </tr>
                         <tr>
-                            <td>客戶名稱</td>
+                            <td>廠商名稱</td>
                             <td>{this.props.name}</td>
                         </tr>
                         <tr>
-                            <td>客戶電話</td>
+                            <td>廠商電話</td>
                             <td>{this.props.phone}</td>
                         </tr>
                         <tr>

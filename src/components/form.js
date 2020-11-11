@@ -193,7 +193,7 @@ function Form(props) {
                 </div>
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="lname">客戶名稱</label>
+                        <label htmlFor="lname">廠商名稱</label>
                     </div>
                     <div className="col-75">
                         <input type="text" id="name" name="name" placeholder="請輸入客戶名稱" onChange={(e) => props.handleChange(e)} value={props.name}></input>
@@ -201,7 +201,7 @@ function Form(props) {
                 </div>
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="subject">客戶電話</label>
+                        <label htmlFor="subject">廠商電話</label>
                     </div>
                     <div className="col-75">
                         <input type="text" id="phone" name="phone" placeholder="請輸入電話" onChange={(e) => props.handleChange(e)} value={props.phone}></input>
