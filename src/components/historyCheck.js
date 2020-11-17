@@ -149,7 +149,12 @@ function HistoryCheck(props) {
                 setDataPrint(data);
             }
             props.setLoadingStatus(false);
-        });
+        })
+        .catch(function(e) {
+            props.setLoadingStatus(false);
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+            console.error(e)
+        })
     }
 
     React.useEffect(() => {
@@ -227,7 +232,7 @@ function HistoryCheck(props) {
                 props.refreshNumber(path);
             }).catch(function () {
                 props.setLoadingStatus(false);
-                alert("伺服器發生錯誤，請稍後再試或是通知管理員");
+                alert("資料庫發生錯誤，請稍後再試或是通知管理員");
                 e.preventDefault();
             });
     }

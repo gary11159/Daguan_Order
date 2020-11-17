@@ -1,25 +1,25 @@
 // EX_Stich
 const config = {
-  apiKey: "AIzaSyC8CYovF6roGgx_zMvh71Lj7Yx3-jpQWyc",
-  authDomain: "poen-61324.firebaseapp.com",
-  databaseURL: "https://poen-61324.firebaseio.com",
-  projectId: "poen-61324",
-  storageBucket: "poen-61324.appspot.com",
-  messagingSenderId: "125653836802",
-  appId: "1:125653836802:web:c8d540243756b36a02331b",
-  measurementId: "G-2NHVFX56BF"
+  apiKey: process.env.REACT_APP_EX_APIKEY,
+  authDomain: process.env.REACT_APP_EX_authDomain,
+  databaseURL: process.env.REACT_APP_EX_databaseURL,
+  projectId: process.env.REACT_APP_EX_projectId,
+  storageBucket: process.env.REACT_APP_EX_storageBucket,
+  messagingSenderId: process.env.REACT_APP_EX_messagingSenderId,
+  appId: process.env.REACT_APP_EX_appId,
+  measurementId: process.env.REACT_APP_EX_measurementId
 };
 
 // Pila
 // const config = {
-//   apiKey: "AIzaSyBtL2A1LBfrlce0W8ra_MufHtXwvP6i-mE",
-//   authDomain: "poen-19703.firebaseapp.com",
-//   databaseURL: "https://poen-19703.firebaseio.com",
-//   projectId: "poen-19703",
-//   storageBucket: "poen-19703.appspot.com",
-//   messagingSenderId: "480812924369",
-//   appId: "1:480812924369:web:e3067d23f831cffd4774f0",
-//   measurementId: "G-747CJBVM3K"
+//   apiKey: process.env.REACT_APP_PILA_APIKEY,
+//   authDomain: process.env.REACT_APP_PILA_authDomain,
+//   databaseURL: process.env.REACT_APP_PILA_databaseURL,
+//   projectId: process.env.REACT_APP_PILA_projectId,
+//   storageBucket: process.env.REACT_APP_PILA_storageBucket,
+//   messagingSenderId: process.env.REACT_APP_PILA_messagingSenderId,
+//   appId: process.env.REACT_APP_PILA_appId,
+//   measurementId: process.env.REACT_APP_PILA_measurementId
 // }
 
 export default config;

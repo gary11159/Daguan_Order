@@ -29,7 +29,12 @@ function Form(props) {
                 setNumberRecord([]);
             }
             props.setLoadingStatus(false);
-        });
+        })
+        .catch(function(e) {
+            props.setLoadingStatus(false);
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+            console.error(e)
+        })
     }
 
     // 處理預開編號input value

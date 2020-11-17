@@ -163,7 +163,12 @@ function PoEn() {
             let data = e.val();
             if (data !== undefined && data !== null) setNumber(findEmpty(Object.keys(data)));
             setLoadingStatus(false);
-        });
+        })
+        .catch(function(e) {
+            setLoadingStatus(false);
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+            console.error(e)
+        })
     }
 
     async function saveData(e, date) {
@@ -197,7 +202,7 @@ function PoEn() {
             initData();
         }).catch(function () {
             setLoadingStatus(false);
-            alert("伺服器發生錯誤，請稍後再試或是通知管理員");
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
             e.preventDefault();
         });
     }
