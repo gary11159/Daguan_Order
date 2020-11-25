@@ -144,6 +144,7 @@ function PoEn() {
 
     // 初始化資料庫
     React.useEffect(() => {
+        setLoadingStatus(true);
         let app = firebase.initializeApp(config);
         let database = app.database();
         setDatabase(database);
@@ -159,16 +160,24 @@ function PoEn() {
 
     function refreshNumber(path) {
         setLoadingStatus(true);
-        database.ref(path).once("value", e => {
-            let data = e.val();
-            if (data !== undefined && data !== null) setNumber(findEmpty(Object.keys(data)));
-            setLoadingStatus(false);
+        database.ref(path).on("value", e => {
+            if (e === null || e === undefined) {
+                setLoadingStatus(false);
+                alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+                console.error(e)
+            }
+            else {
+                let data = e.val();
+                if (data !== undefined && data !== null) setNumber(findEmpty(Object.keys(data)));
+                setLoadingStatus(false);
+            }
+
         })
-        .catch(function(e) {
-            setLoadingStatus(false);
-            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
-            console.error(e)
-        })
+        // .catch(function(e) {
+        //     setLoadingStatus(false);
+        //     alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+        //     console.error(e)
+        // })
     }
 
     async function saveData(e, date) {
