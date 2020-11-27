@@ -161,7 +161,7 @@ function Form(props) {
                             :
                             <div className="row" className="elementAlignCenter">
                                 <div className="col-85">
-                                    <input type="text" id="number" name="number" value={futureNumber} onChange={(e) => handlerFutureNumberChange(e)}></input>
+                                    <input type="text" id="number" name="number" maxLength="3" value={futureNumber} onChange={(e) => handlerFutureNumberChange(e)}></input>
                                 </div>
                                 <div className="col-15">
                                     <button className="printButton" style={{ width: '80%' }} onClick={() => checkNumber()}>檢查</button>
