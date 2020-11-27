@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "11a3ee6caed5b8ec1d159b463cb07f08",
+    "revision": "c792b89e1dab8ebab858a35398cf0e9a",
     "url": "/daguan_order/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/daguan_order/static/css/2.e6ac38db.chunk.css"
   },
   {
-    "revision": "39357b3afeb204b7fb4c",
+    "revision": "2845fa218ee449e1d35f",
     "url": "/daguan_order/static/css/main.76386005.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/daguan_order/static/js/2.0d32fe95.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "39357b3afeb204b7fb4c",
-    "url": "/daguan_order/static/js/main.64795959.chunk.js"
+    "revision": "2845fa218ee449e1d35f",
+    "url": "/daguan_order/static/js/main.35ef5b4b.chunk.js"
   },
   {
     "revision": "97484c28cbfda51e3c77",
