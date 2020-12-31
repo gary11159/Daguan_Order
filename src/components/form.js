@@ -78,31 +78,35 @@ function Form(props) {
     // 轉換編號成正式格式
     function convertNum(num) {
         if (num === "") return "";
+        let month;
         if (props.from === "now") {
+            month = (new Date().getMonth() + 1) < 10 ? '0' + (new Date().getMonth() + 1) : (new Date().getMonth() + 1);
             if (num < 10) {
-                return (new Date().getFullYear() - 1911) + "" + (new Date().getMonth() + 1) + '00' + num;
+                return (new Date().getFullYear() - 1911) + "" + month + '00' + num;
             } else if (num < 100) {
-                return (new Date().getFullYear() - 1911) + "" + (new Date().getMonth() + 1) + '0' + num;
+                return (new Date().getFullYear() - 1911) + "" + month + '0' + num;
             } else {
-                return (new Date().getFullYear() - 1911) + "" + (new Date().getMonth() + 1) + "" + num;
+                return (new Date().getFullYear() - 1911) + "" + month + "" + num;
             }
         } else if (props.from === "future") {
             if (chooseDate === undefined || chooseDate === null || chooseDate === "" || num === "") return "";
+            month = (chooseDate.getMonth() + 1) < 10 ? '0' + (chooseDate.getMonth() + 1) : (chooseDate.getMonth() + 1);
             if (num < 10) {
-                return (chooseDate.getFullYear() - 1911) + "" + (chooseDate.getMonth() + 1) + '00' + num;
+                return (chooseDate.getFullYear() - 1911) + "" + month + '00' + num;
             } else if (num < 100) {
-                return (chooseDate.getFullYear() - 1911) + "" + (chooseDate.getMonth() + 1) + '0' + num;
+                return (chooseDate.getFullYear() - 1911) + "" + month + '0' + num;
             } else {
-                return (chooseDate.getFullYear() - 1911) + "" + (chooseDate.getMonth() + 1) + "" + num;
+                return (chooseDate.getFullYear() - 1911) + "" + month + "" + num;
             }
         } else if (props.from === "history") {
             if (props.historyChooseDate === undefined || props.historyChooseDate === null || props.historyChooseDate === "" || num === "") return "";
+            month = (props.historyChooseDate.getMonth() + 1) < 10 ? '0' + (props.historyChooseDate.getMonth() + 1) : (props.historyChooseDate.getMonth() + 1);
             if (num < 10) {
-                return (props.historyChooseDate.getFullYear() - 1911) + "" + (props.historyChooseDate.getMonth() + 1) + '00' + num;
+                return (props.historyChooseDate.getFullYear() - 1911) + "" + month + '00' + num;
             } else if (num < 100) {
-                return (props.historyChooseDate.getFullYear() - 1911) + "" + (props.historyChooseDate.getMonth() + 1) + '0' + num;
+                return (props.historyChooseDate.getFullYear() - 1911) + "" + month + '0' + num;
             } else {
-                return (props.historyChooseDate.getFullYear() - 1911) + "" + (props.historyChooseDate.getMonth() + 1) + "" + num;
+                return (props.historyChooseDate.getFullYear() - 1911) + "" + month + "" + num;
             }
         }
     }
