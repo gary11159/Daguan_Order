@@ -97,6 +97,7 @@ label {
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.1em;
+  margin: 10px;
 }
 
 .container {

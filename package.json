@@ -10,10 +10,11 @@
     "antd": "^4.8.0",
     "firebase": "^8.0.1",
     "gh-pages": "^3.1.0",
+    "html-to-image": "^1.11.11",
     "react": "^16.13.1",
     "react-datepicker": "^3.3.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^5.0.1",
     "react-to-print": "^2.11.0"
   },
   "scripts": {
