@@ -1,29 +1,17 @@
 {
   "files": {
-    "main.css": "/daguan_order/static/css/main.76386005.chunk.css",
-    "main.js": "/daguan_order/static/js/main.f6f08df5.chunk.js",
-    "main.js.map": "/daguan_order/static/js/main.f6f08df5.chunk.js.map",
-    "runtime-main.js": "/daguan_order/static/js/runtime-main.16c62ea5.js",
-    "runtime-main.js.map": "/daguan_order/static/js/runtime-main.16c62ea5.js.map",
-    "static/css/2.e6ac38db.chunk.css": "/daguan_order/static/css/2.e6ac38db.chunk.css",
-    "static/js/2.0d32fe95.chunk.js": "/daguan_order/static/js/2.0d32fe95.chunk.js",
-    "static/js/2.0d32fe95.chunk.js.map": "/daguan_order/static/js/2.0d32fe95.chunk.js.map",
+    "main.css": "/daguan_order/static/css/main.45532160.css",
+    "main.js": "/daguan_order/static/js/main.aa38866d.js",
+    "static/media/logo_Cow.png": "/daguan_order/static/media/logo_Cow.b895dbd676b1ac916f85.png",
+    "static/media/logo_EX.png": "/daguan_order/static/media/logo_EX.399e2ec5443d5247fa32.png",
+    "static/media/loading.gif": "/daguan_order/static/media/loading.5fb16547db536d503d60.gif",
+    "static/media/title.png": "/daguan_order/static/media/title.49a653dbfe00cbcdeb26.png",
     "index.html": "/daguan_order/index.html",
-    "precache-manifest.c14dcb13e5c281812d9251c7799ea7c6.js": "/daguan_order/precache-manifest.c14dcb13e5c281812d9251c7799ea7c6.js",
-    "service-worker.js": "/daguan_order/service-worker.js",
-    "static/css/2.e6ac38db.chunk.css.map": "/daguan_order/static/css/2.e6ac38db.chunk.css.map",
-    "static/css/main.76386005.chunk.css.map": "/daguan_order/static/css/main.76386005.chunk.css.map",
-    "static/js/2.0d32fe95.chunk.js.LICENSE.txt": "/daguan_order/static/js/2.0d32fe95.chunk.js.LICENSE.txt",
-    "static/media/loading.gif": "/daguan_order/static/media/loading.7a960949.gif",
-    "static/media/logo_Cow.png": "/daguan_order/static/media/logo_Cow.fbacc9c8.png",
-    "static/media/logo_EX.png": "/daguan_order/static/media/logo_EX.94428a0a.png",
-    "static/media/title.png": "/daguan_order/static/media/title.0a4286b0.png"
+    "main.45532160.css.map": "/daguan_order/static/css/main.45532160.css.map",
+    "main.aa38866d.js.map": "/daguan_order/static/js/main.aa38866d.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.16c62ea5.js",
-    "static/css/2.e6ac38db.chunk.css",
-    "static/js/2.0d32fe95.chunk.js",
-    "static/css/main.76386005.chunk.css",
-    "static/js/main.f6f08df5.chunk.js"
+    "static/css/main.45532160.css",
+    "static/js/main.aa38866d.js"
   ]
 }
