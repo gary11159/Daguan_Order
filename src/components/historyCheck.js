@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Form from './form';
 import DatePicker, { registerLocale } from "react-datepicker";
 import noti from '../public/noti.png';
 import ja from 'date-fns/locale/ja';
 import { Space } from 'antd';
 import Title from '../public/title.png';
+import { toPng } from 'html-to-image';
 registerLocale('ja', ja)
 
 class ComponentToPrint extends React.Component {
@@ -95,6 +96,7 @@ class ComponentToPrint extends React.Component {
 function HistoryCheck(props) {
     const ref = React.useRef();
     const componentRef = React.useRef();
+    const printRef = React.useRef();
     const [firstIn, setFirstIn] = React.useState(true)
     const [dataPrint, setDataPrint] = React.useState();
     const [numberPicker, setNumberPicker] = React.useState();
@@ -150,11 +152,11 @@ function HistoryCheck(props) {
             }
             props.setLoadingStatus(false);
         })
-        .catch(function(e) {
-            props.setLoadingStatus(false);
-            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
-            console.error(e)
-        })
+            .catch(function (e) {
+                props.setLoadingStatus(false);
+                alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+                console.error(e)
+            })
     }
 
     React.useEffect(() => {
@@ -175,7 +177,7 @@ function HistoryCheck(props) {
             setMoney(data.money);
             setOther(data.other);
             setFactory(data.factory === undefined ? "" : data.factory);
-            setWorktime(data.workTime === undefined ? "": data.workTime);
+            setWorktime(data.workTime === undefined ? "" : data.workTime);
         } else {
             initData();
         }
@@ -227,14 +229,14 @@ function HistoryCheck(props) {
                     'updateTime': new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds()
                 }
             }))
-            ).then(function () {
-                props.setLoadingStatus(false);
-                props.refreshNumber(path);
-            }).catch(function () {
-                props.setLoadingStatus(false);
-                alert("資料庫發生錯誤，請稍後再試或是通知管理員");
-                e.preventDefault();
-            });
+        ).then(function () {
+            props.setLoadingStatus(false);
+            props.refreshNumber(path);
+        }).catch(function () {
+            props.setLoadingStatus(false);
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+            e.preventDefault();
+        });
     }
 
     function handleChange(e) {
@@ -310,6 +312,7 @@ function HistoryCheck(props) {
                         <Form
                             handleChange={(e) => handleChange(e)}
                             componentRef={componentRef}
+                            printRef={printRef}
                             number={chooseNumber}
                             dateTime={dateTime}
                             address={address}
@@ -325,20 +328,22 @@ function HistoryCheck(props) {
                             from="history"
                             setLoadingStatus={(status) => props.setLoadingStatus(status)}
                         />
-                        <div style={{ overflow: 'hidden', height: 0 }}>
-                            {/* <div style={{ width: '100%' }}> */}
-                            <ComponentToPrint
-                                number={convertNum(chooseNumber)}
-                                dateTime={dateTime}
-                                name={name}
-                                phone={phone}
-                                money={money}
-                                sale={sale}
-                                address={address}
-                                other={other}
-                                factory={factory}
-                                workTime={workTime}
-                                ref={el => (componentRef.current = el)} />
+                        <div style={{ overflow: 'hidden', height: 0, width: 320 }} >
+                            <div ref={printRef} style={{backgroundColor: 'white', color: 'black'}}>
+                                {/* <div style={{ width: '100%' }}> */}
+                                <ComponentToPrint
+                                    number={convertNum(chooseNumber)}
+                                    dateTime={dateTime}
+                                    name={name}
+                                    phone={phone}
+                                    money={money}
+                                    sale={sale}
+                                    address={address}
+                                    other={other}
+                                    factory={factory}
+                                    workTime={workTime}
+                                    ref={el => (componentRef.current = el)} />
+                            </div>
                         </div>
                     </>
                 }

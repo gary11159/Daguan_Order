@@ -96,6 +96,7 @@ class ComponentToPrint extends React.Component {
 
 function PoEn() {
     const componentRef = React.useRef();
+    const printRef = React.useRef();
     const [curTab, setCurTab] = React.useState("tab1");
     const [number, setNumber] = React.useState(1);
     const [dateTime, setDateTime] = React.useState(new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate());
@@ -292,6 +293,7 @@ function PoEn() {
                         handleChange={(e) => handleChange(e)}
                         number={number}
                         componentRef={componentRef}
+                        printRef={printRef}
                         dateTime={dateTime}
                         phone={phone}
                         money={money}
@@ -315,20 +317,22 @@ function PoEn() {
                 </div>
             </div>
 
-            <div style={{ overflow: 'hidden', height: 0 }}>
-                {/* <div style={{ width: '100%' }}> */}
-                <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
-                    number={from === "now" ? convertNum(number) : convertNum(futureNum)}
-                    dateTime={dateTime}
-                    factory={factory}
-                    workTime={workTime}
-                    name={name}
-                    phone={phone}
-                    money={money}
-                    sale={sale}
-                    address={address}
-                    other={other}
-                    ref={el => (componentRef.current = el)} />
+            <div style={{ overflow: 'hidden', height: 0, width: 320 }}>
+                <div ref={printRef} style={{backgroundColor: 'white', color: 'black'}}>
+                    {/* <div style={{ width: '100%' }}> */}
+                    <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
+                        number={from === "now" ? convertNum(number) : convertNum(futureNum)}
+                        dateTime={dateTime}
+                        factory={factory}
+                        workTime={workTime}
+                        name={name}
+                        phone={phone}
+                        money={money}
+                        sale={sale}
+                        address={address}
+                        other={other}
+                        ref={el => (componentRef.current = el)} />
+                </div>
             </div>
             <div id="footer">
                 <footer className="footer allCenter" style={{ marginTop: '10px' }}>
