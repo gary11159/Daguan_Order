@@ -1,10 +1,9 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import ReactToPrint from 'react-to-print';
 import DatePicker from "react-datepicker";
 import Pass from '../public/check.png';
 import Fail from '../public/noti.png';
 import Warn from '../public/warning.png';
-import { toPng } from 'html-to-image';
 
 function Form(props) {
     const [numberRecord, setNumberRecord] = React.useState();
@@ -31,11 +30,11 @@ function Form(props) {
             }
             props.setLoadingStatus(false);
         })
-            .catch(function (e) {
-                props.setLoadingStatus(false);
-                alert("資料庫發生錯誤，請稍後再試或是通知管理員");
-                console.error(e)
-            })
+        .catch(function(e) {
+            props.setLoadingStatus(false);
+            alert("資料庫發生錯誤，請稍後再試或是通知管理員");
+            console.error(e)
+        })
     }
 
     // 處理預開編號input value
@@ -110,25 +109,6 @@ function Form(props) {
                 return (props.historyChooseDate.getFullYear() - 1911) + "" + month + "" + num;
             }
         }
-    }
-
-    // 下載預覽列印的圖
-    function downloadImg(ref) {
-        if (ref.current === null) {
-            return
-        }
-
-        let type = props.from === 'history' ? '歷史' : props.from === 'now' ? '當前' : '';
-        toPng(ref.current, { cacheBust: true, })
-            .then((dataUrl) => {
-                const link = document.createElement('a')
-                link.download = type + '_' + convertNum(props.number);
-                link.href = dataUrl
-                link.click()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
     }
 
     return (
@@ -287,10 +267,6 @@ function Form(props) {
                         }
                         content={() => props.componentRef.current}
                     />
-                    <button className={props.number !== undefined && props.number !== "" ? "printButton" : "printButton notAllow"}
-                        disabled={props.number !== undefined && props.number !== "" ? false : true} style={{ backgroundColor: '#6e552e' }} onClick={() => {
-                            downloadImg(props.printRef);
-                        }}>儲存圖片</button>
                 </div>
             </div>
         </>
