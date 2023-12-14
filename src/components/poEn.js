@@ -317,7 +317,7 @@ function PoEn() {
                 </div>
             </div>
 
-            <div style={{ overflow: 'hidden', height: 0, width: 320 }}>
+            <div style={{ overflow: 'hidden', height: 0, width: 450 }}>
                 <div ref={printRef} style={{backgroundColor: 'white', color: 'black'}}>
                     {/* <div style={{ width: '100%' }}> */}
                     <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
