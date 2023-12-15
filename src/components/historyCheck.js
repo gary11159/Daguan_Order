@@ -40,7 +40,7 @@ class ComponentToPrint extends React.Component {
                 <div style={{ display: 'flex', justifyContent: 'start' }}>
                     <img src={Title} style={{ width: '100%' }} alt="logo"></img>
                 </div>
-                <table className="print" style={{ width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px' }}>
+                <table className="print" style={{ width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px', bottom: '15px', position: 'relative' }}>
                     <tbody>
                         <tr>
                             <td style={{ width: '30%' }}>日期</td>
