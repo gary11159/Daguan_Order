@@ -36,11 +36,12 @@ class ComponentToPrint extends React.Component {
 
     render() {
         return (
-            <div style={{ fontSize: '30px' }} className="printFont">
+            <div style={this.props.boldOrNot ? { fontSize: '30px', fontWeight: '900' } : { fontSize: '30px', fontWeight: '500' }} className="printFont">
                 <div style={{ display: 'flex', justifyContent: 'start' }}>
                     <img src={Title} style={{ width: '100%' }} alt="logo"></img>
                 </div>
-                <table className="print" style={{ width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px', bottom: '15px', position: 'relative' }}>
+                <table className="print" style={this.props.boldOrNot ? { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px' } :
+                    { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px', bottom: '15px', position: 'relative' }} >
                     <tbody>
                         <tr>
                             <td style={{ width: '30%' }}>日期</td>
@@ -317,12 +318,13 @@ function PoEn() {
                 </div>
             </div>
 
-            <div style={{ overflow: 'hidden', height: 0, width: 450 }}>
-                <div ref={printRef} style={{backgroundColor: 'white', color: 'black'}}>
+            <div style={{ overflow: 'hidden', height: 0 }}>
+                <div style={{ backgroundColor: 'white', color: 'black' }}>
                     {/* <div style={{ width: '100%' }}> */}
                     <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
                         number={from === "now" ? convertNum(number) : convertNum(futureNum)}
                         dateTime={dateTime}
+                        boldOrNot={true}
                         factory={factory}
                         workTime={workTime}
                         name={name}
@@ -332,6 +334,23 @@ function PoEn() {
                         address={address}
                         other={other}
                         ref={el => (componentRef.current = el)} />
+                </div>
+            </div>
+            <div style={{ overflow: 'hidden', height: 0, width: 450 }}>
+                <div ref={printRef} style={{ backgroundColor: 'white', color: 'black' }}>
+                    {/* <div style={{ width: '100%' }}> */}
+                    <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
+                        number={from === "now" ? convertNum(number) : convertNum(futureNum)}
+                        boldOrNot={false}
+                        dateTime={dateTime}
+                        factory={factory}
+                        workTime={workTime}
+                        name={name}
+                        phone={phone}
+                        money={money}
+                        sale={sale}
+                        address={address}
+                        other={other} />
                 </div>
             </div>
             <div id="footer">
