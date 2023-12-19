@@ -36,12 +36,12 @@ class ComponentToPrint extends React.Component {
 
     render() {
         return (
-            <div style={this.props.boldOrNot ? { fontSize: '30px', fontWeight: '500' } : { fontSize: '30px', fontWeight: '500' }} className="printFont">
+            <div className="printFont">
                 <div style={{ display: 'flex', justifyContent: 'start' }}>
                     <img src={Title} style={{ width: '100%' }} alt="logo"></img>
                 </div>
-                <table className="print" style={this.props.boldOrNot ? { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px' } :
-                    { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px', bottom: '15px', position: 'relative' }} >
+                <table className="print" style={this.props.printOrPic ? { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '10px' } :
+                    { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '20px', bottom: '15px', position: 'relative' }} >
                     <tbody>
                         <tr>
                             <td style={{ width: '30%' }}>日期</td>
@@ -324,7 +324,7 @@ function PoEn() {
                     <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
                         number={from === "now" ? convertNum(number) : convertNum(futureNum)}
                         dateTime={dateTime}
-                        boldOrNot={true}
+                        printOrPic={true}
                         factory={factory}
                         workTime={workTime}
                         name={name}
@@ -341,7 +341,7 @@ function PoEn() {
                     {/* <div style={{ width: '100%' }}> */}
                     <ComponentToPrint style={{ overflow: 'hidden', height: 0 }}
                         number={from === "now" ? convertNum(number) : convertNum(futureNum)}
-                        boldOrNot={false}
+                        printOrPic={false}
                         dateTime={dateTime}
                         factory={factory}
                         workTime={workTime}

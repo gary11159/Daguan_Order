@@ -286,4 +286,6 @@ td {
 .printFont {
   text-shadow: 1px 0 black;
   letter-spacing: 1px;
+  font-size: '30px';
+  font-weight: '500';
 }
