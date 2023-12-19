@@ -36,7 +36,7 @@ class ComponentToPrint extends React.Component {
 
     render() {
         return (
-            <div style={ this.props.boldOrNot ? { fontSize: '30px', fontWeight: '900' } : { fontSize: '30px', fontWeight: '500' }} className="printFont">
+            <div style={ this.props.boldOrNot ? { fontSize: '30px', fontWeight: '500' } : { fontSize: '30px', fontWeight: '500' }} className="printFont">
                 <div style={{ display: 'flex', justifyContent: 'start' }}>
                     <img src={Title} style={{ width: '100%' }} alt="logo"></img>
                 </div>
