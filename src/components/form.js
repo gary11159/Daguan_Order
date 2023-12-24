@@ -288,8 +288,13 @@ function Form(props) {
                         content={() => props.componentRef.current}
                     />
                     <button className={props.number !== undefined && props.number !== "" ? "printButton" : "printButton notAllow"}
-                        disabled={props.number !== undefined && props.number !== "" ? false : true} style={{ backgroundColor: '#6e552e' }} onClick={() => {
+                        disabled={props.number !== undefined && props.number !== "" ? false : true} style={{ backgroundColor: '#6e552e' }} onClick={(e) => {
                             downloadImg(props.printRef);
+                            // 是當前列印的儲存圖片的話，要做紀錄資料
+                            if( props.from == 'now' ) {
+                                props.saveData(e, chooseDate, futureNumber);
+                            }
+                            
                         }}>儲存圖片</button>
                 </div>
             </div>
