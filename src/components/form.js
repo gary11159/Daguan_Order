@@ -113,7 +113,7 @@ function Form(props) {
     }
 
     // 下載預覽列印的圖
-    function downloadImg(ref) {
+    async function downloadImg(ref, e) {
         if (ref.current === null) {
             return
         }
@@ -121,16 +121,20 @@ function Form(props) {
         let type = props.from === 'history' ? '歷史' : props.from === 'now' ? '當前' : '';
         toPng(ref.current, { cacheBust: true, })
             .then((dataUrl) => {
-                const link = document.createElement('a')
+                const link = document.createElement('a');
                 link.download = type + '_' + convertNum(props.number);
-                link.href = dataUrl
-                link.click()
+                link.href = dataUrl;
+                link.click();
+                // 是當前列印的儲存圖片的話，要做紀錄資料
+                if (props.from == 'now') {
+                    props.saveData(e, chooseDate, futureNumber);
+                }
             })
             .catch((err) => {
                 console.log(err)
             })
     }
-
+    
     return (
         <>
             <div className="form">
@@ -289,12 +293,7 @@ function Form(props) {
                     />
                     <button className={props.number !== undefined && props.number !== "" ? "printButton" : "printButton notAllow"}
                         disabled={props.number !== undefined && props.number !== "" ? false : true} style={{ backgroundColor: '#6e552e' }} onClick={(e) => {
-                            downloadImg(props.printRef);
-                            // 是當前列印的儲存圖片的話，要做紀錄資料
-                            if( props.from == 'now' ) {
-                                props.saveData(e, chooseDate, futureNumber);
-                            }
-                            
+                            downloadImg(props.printRef, e);
                         }}>儲存圖片</button>
                 </div>
             </div>
