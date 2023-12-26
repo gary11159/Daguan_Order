@@ -44,48 +44,48 @@ class ComponentToPrint extends React.Component {
                     { width: 'calc(100% - 10px)', margin: '0 auto', marginTop: '20px', bottom: '15px', position: 'relative' }} >
                     <tbody>
                         <tr>
-                            <td style={{ width: '30%' }}>日期</td>
-                            <td>{this.props.dateTime}</td>
+                            <td style={this.props.printOrPic ? { width: '30%' } : { width: '30%', borderLeft: '4px solid' }}>日期</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.dateTime}</td>
                         </tr>
                         <tr>
-                            <td>編號</td>
-                            <td>{this.props.number}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>編號</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.number}</td>
                         </tr>
                         <tr>
-                            <td>承辦業務</td>
-                            <td>{this.props.sale}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>承辦業務</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.sale}</td>
                         </tr>
                         <tr>
-                            <td>廠商</td>
-                            <td>{this.props.factory}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>廠商</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.factory}</td>
                         </tr>
                         <tr>
-                            <td>廠商名稱</td>
-                            <td>{this.props.name}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>廠商名稱</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.name}</td>
                         </tr>
                         <tr>
-                            <td>廠商電話</td>
-                            <td>{this.props.phone}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>廠商電話</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.phone}</td>
                         </tr>
                         <tr>
-                            <td>施工時間</td>
-                            <td>{this.props.workTime}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>施工時間</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.workTime}</td>
                         </tr>
                         <tr>
-                            <td style={{ height: '100px' }}>施工地址</td>
-                            <td>{this.handlerEnter(this.props.address)}</td>
+                            <td  style={this.props.printOrPic ? {height: '100px', borderLeft: '4px solid'} : { borderLeft: '4px solid' }}>施工地址</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.handlerEnter(this.props.address)}</td>
                         </tr>
                         <tr>
-                            <td>金額</td>
-                            <td>{this.props.money}</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid' }}>金額</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.props.money}</td>
                         </tr>
                         <tr>
-                            <td style={{ height: '60px' }}>客戶簽收</td>
-                            <td></td>
+                            <td style={this.props.printOrPic ? {height: '60px', borderLeft: '4px solid'} : { borderLeft: '4px solid' }}>客戶簽收</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}></td>
                         </tr>
                         <tr>
-                            <td style={{ height: '60px' }}>備註</td>
-                            <td>{this.handlerEnter(this.props.other)}</td>
+                            <td style={this.props.printOrPic ? { height: '60px', borderLeft: '4px solid' } : { borderLeft: '4px solid' }}>備註</td>
+                            <td style={this.props.printOrPic ? {} : { borderLeft: '4px solid', borderRight: '4px solid' }}>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
                 </table>
