@@ -72,7 +72,7 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.workTime}</td>
                         </tr>
                         <tr>
-                            <td  style={this.props.printOrPic ? {height: '100px', borderRight: '4px solid'} : { borderRight: '4px solid' }}>施工地址</td>
+                            <td  style={this.props.printOrPic ? {height: '100px'} : { height: '100px', borderRight: '4px solid' }}>施工地址</td>
                             <td>{this.handlerEnter(this.props.address)}</td>
                         </tr>
                         <tr>
@@ -80,11 +80,11 @@ class ComponentToPrint extends React.Component {
                             <td>{this.props.money}</td>
                         </tr>
                         <tr>
-                            <td style={this.props.printOrPic ? {height: '60px', borderRight: '4px solid'} : { borderRight: '4px solid' }}>客戶簽收</td>
+                            <td style={this.props.printOrPic ? {height: '60px'} : { height: '60px', borderRight: '4px solid' }}>客戶簽收</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td style={this.props.printOrPic ? { height: '60px', borderRight: '4px solid' } : { borderRight: '4px solid' }}>備註</td>
+                            <td style={this.props.printOrPic ? { height: '60px' } : { height: '60px', borderRight: '4px solid' }}>備註</td>
                             <td>{this.handlerEnter(this.props.other)}</td>
                         </tr>
                     </tbody>
