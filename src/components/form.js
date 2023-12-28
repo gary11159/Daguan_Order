@@ -125,16 +125,14 @@ function Form(props) {
                 link.download = type + '_' + convertNum(props.number);
                 link.href = dataUrl;
                 link.click();
-                // 是當前列印的儲存圖片的話，要做紀錄資料
-                if (props.from == 'now') {
-                    props.saveData(e, chooseDate, futureNumber);
-                }
+                // 儲存圖片時也要儲存檔案
+                props.saveData(e, chooseDate, futureNumber);
             })
             .catch((err) => {
                 console.log(err)
             })
     }
-    
+
     return (
         <>
             <div className="form">
